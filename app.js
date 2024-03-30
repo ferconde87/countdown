@@ -10,17 +10,39 @@ let timerInterval; // To store the timer interval
 
 // Update timer display
 function displayTime() {
-    // Code to format and display the time goes here
+    let minutes = Math.floor(currentTime / 60);
+    let seconds = currentTime % 60;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    timerDisplay.textContent = `${minutes}:${seconds}`;
 }
 
 // Start timer functionality
 startButton.addEventListener('click', () => {
-    // Code to start the timer goes here
+    console.log("Start button clicked!");
+    if (timerInterval) return;  // Check if timer is already running
+
+    timerInterval = setInterval(() => {
+        currentTime--;
+        displayTime();
+
+        if (currentTime <= 0) {
+            clearInterval(timerInterval);
+            // Play audio cue
+            resetButton.disabled = false; // Enable reset button after timer ends
+        }
+    }, 1000); // Interval set to 1 second (1000 milliseconds)
+    resetButton.disabled = true; // Disable reset button while timer is running
 });
+
 
 // Reset timer functionality
 resetButton.addEventListener('click', () => {
-    // Code to reset the timer goes here
+    currentTime = defaultTime;
+    displayTime();
+    clearInterval(timerInterval); // Clear any running timer interval
+    timerInterval = null; // Set timerInterval to null to indicate timer is stopped
+    resetButton.disabled = true; // Disable reset button again
 });
 
 // Call `displayTime` to initialize the timer on page load
