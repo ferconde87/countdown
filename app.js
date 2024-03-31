@@ -39,7 +39,6 @@ startButton.addEventListener('click', () => {
     resetButton.disabled = true; // Disable reset button while timer is running
 });
 
-
 // Reset timer functionality
 resetButton.addEventListener('click', () => {
     currentTime = defaultTime;
@@ -47,6 +46,13 @@ resetButton.addEventListener('click', () => {
     clearInterval(timerInterval); // Clear any running timer interval
     timerInterval = null; // Set timerInterval to null to indicate timer is stopped
     resetButton.disabled = true; // Disable reset button again
+});
+
+// Custom time input functionality
+customTimeInput.addEventListener('change', () => {
+    defaultTime = customTimeInput.value * 60; // Convert minutes to seconds
+    currentTime = defaultTime;
+    displayTime();
 });
 
 // Call `displayTime` to initialize the timer on page load
