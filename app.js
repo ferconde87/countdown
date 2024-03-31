@@ -15,6 +15,8 @@ function displayTime() {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
     timerDisplay.textContent = `${minutes}:${seconds}`;
+    const bellSound = document.getElementById('bellSound');
+    bellSound.load(); // Preload the sound
 }
 
 // Start timer functionality
@@ -29,6 +31,8 @@ startButton.addEventListener('click', () => {
         if (currentTime <= 0) {
             clearInterval(timerInterval);
             // Play audio cue
+
+            bellSound.play(); // Play the bell sound
             resetButton.disabled = false; // Enable reset button after timer ends
         }
     }, 1000); // Interval set to 1 second (1000 milliseconds)
