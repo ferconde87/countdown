@@ -89,6 +89,7 @@ function saveTimer() {
     hideEditButton();
     hideInput();
     showTimer();
+    resetButton.disabled = true; // Disable reset button after saving the timer
 }
 
 function onTimerChange() {
