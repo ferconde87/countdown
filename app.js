@@ -9,10 +9,10 @@ const editButton = document.getElementById('editButton');
 const bellSound = document.getElementById('bellSound');
 
 // Variables
-let defaultTime = 25 * 60; // 25 minutes in seconds
+let defaultTime = 10 * 60; // 25 minutes in seconds
 let currentTime = defaultTime;
 let timerInterval; // To store the timer interval
-let isPaused = false; // Initial state is not paused
+let isPaused = true; // Initial state is paused
 
 // Event Listeners
 startPauseButton.addEventListener('click', startPauseTimer);
@@ -34,9 +34,11 @@ function startPauseTimer() {
     if (isPaused) {
         startTimer(); // Resume the timer
         startPauseButton.textContent = "Pause";
+        startPauseButton.value = "Pause";
     } else {
         pauseTimer(); // Pause the timer
         startPauseButton.textContent = "Start";
+        startPauseButton.value = "Start";
     }
     isPaused = !isPaused; // Toggle the isPaused flag
 }
@@ -111,7 +113,7 @@ function displayTime() {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
     timerOutput.textContent = `${minutes}:${seconds}`;
-
+    resetButton.disabled = true;
     bellSound.load(); // Preload the sound
 }
 

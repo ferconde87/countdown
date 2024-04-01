@@ -3,15 +3,101 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    min-height: 100vh;
+    background-color: #e0e0e0; /* Light gray background */
 }
 
 .container {
+    background-color: #fff; /* White container */
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.container h1 {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+#timerContainer {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 #timer {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 80px;
+    color: #000; /* Black timer display */
+}
+
+/* Editable timer display */
+#timer {
+    font-size: 80px;
+    color: #000; /* Black timer display */
+    border: 2px dashed #ccc; /* Dashed border for edit mode */
+}
+
+#timerInput {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    display: none; /* Hide initially */
+    font-size: 80px; /* Match the timer text */
+    text-align: center; /* Center the time display */
+    width: 200px; /* Adjust width as needed */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#startPauseButton {
+    background-color: #2ecc71; /* Green start button */
+}
+
+#resetButton {
+    background-color: #e74c3c; /* Red reset button */
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#startPauseButton:hover {
+    opacity: 0.8;
+}
+
+/* Apply yellow background when button text content is "Pause" */
+#startPauseButton[value="Pause"] {
+    background-color: #f1c40f; /* Yellow color */
+}
+
+#startPauseButton[value="Start"] {
+    background-color: #2ecc71; /* Green start button */
+}
+
+/* Hidden edit button */
+#editButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: transparent; /* Transparent initially */
+    color: #999; /* Gray text color */
+}
+
+/* Show edit button and input field on hover */
+#timerContainer:hover #editButton,
+#timerContainer:hover #timerInput {
+    display: inline-block;
 }
