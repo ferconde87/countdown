@@ -5,15 +5,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Pomodoro Timer</h1>
-        <div id="timer">25:00</div>
-        <input type="number" id="customTime" placeholder="Custom Time (minutes)">
-        <button id="startButton">Start</button>
-        <button id="resetButton">Reset</button>
+<div class="container">
+    <h1>Pomodoro Timer</h1>
+    <div id="timerContainer">
+        <output id="timer">25:00</output>
+        <input type="number" id="timerInput" min="1" value="25" style="display: none;">
+        <button id="editButton" style="display: none;">Edit</button>
     </div>
+    <button id="startButton">Start</button>
+    <button id="resetButton">Reset</button>
+</div>
 
-    <audio id="bellSound" src="bell.mp3"></audio>
-    <script src="app.js"></script>
+<audio id="bellSound" src="bell.mp3"></audio>
+<script src="app.js"></script>
 </body>
 </html>
+
