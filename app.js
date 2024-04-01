@@ -18,12 +18,17 @@ let isPaused = false; // Initial state is not paused
 startPauseButton.addEventListener('click', startPauseTimer);
 resetButton.addEventListener('click', resetTimer);
 timerContainer.addEventListener('click', editTimer);
-editButton.addEventListener('click', saveTimer);
+editButton.addEventListener('click', saveTimerOnEditButton);
 timerInput.addEventListener('change', onTimerChange);
 timerInput.addEventListener('keyup', saveTimerOnEnterKey);
 
 // Functions
 startPauseButton.addEventListener('click', startPauseTimer);
+
+function saveTimerOnEditButton(event) {
+    saveTimer();
+    event.stopPropagation();
+}
 
 function startPauseTimer() {
     if (isPaused) {
