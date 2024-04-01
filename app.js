@@ -1,6 +1,6 @@
 // Get DOM Elements
 const timerOutput = document.getElementById('timer'); // Use timerOutput consistently
-const startButton = document.getElementById('startButton');
+const startPauseButton = document.getElementById('startPauseButton');
 const resetButton = document.getElementById('resetButton');
 const customTimeInput = document.getElementById('customTime');
 const timerContainer = document.getElementById('timerContainer');
@@ -15,7 +15,7 @@ let timerInterval; // To store the timer interval
 let isPaused = false; // Initial state is not paused
 
 // Event Listeners
-startButton.addEventListener('click', startTimer);
+startPauseButton.addEventListener('click', startPauseTimer);
 resetButton.addEventListener('click', resetTimer);
 timerContainer.addEventListener('click', editTimer);
 editButton.addEventListener('click', saveTimer);
@@ -23,6 +23,25 @@ timerInput.addEventListener('change', onTimerChange);
 timerInput.addEventListener('keyup', saveTimerOnEnterKey);
 
 // Functions
+startPauseButton.addEventListener('click', startPauseTimer);
+
+function startPauseTimer() {
+    if (isPaused) {
+        startTimer(); // Resume the timer
+        startPauseButton.textContent = "Pause";
+    } else {
+        pauseTimer(); // Pause the timer
+        startPauseButton.textContent = "Start";
+    }
+    isPaused = !isPaused; // Toggle the isPaused flag
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval); // Clear the interval to pause the timer
+    timerInterval = null; // Set timerInterval to null to indicate timer is stopped
+    resetButton.disabled = false; // Enable reset button when timer is paused
+}
+
 function startTimer() {
     if (timerInterval) return;  // Check if timer is already running
 
